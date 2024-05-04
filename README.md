@@ -1,0 +1,1 @@
+# Projeto baseado no Spring para fins educativos apenas. Não use em produção.
