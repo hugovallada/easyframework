@@ -3,17 +3,22 @@ package com.github.hugovallada.easyframework.web;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.*;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
 
+import com.github.hugovallada.easyframework.EasyFrameworkApplication;
+import com.github.hugovallada.easyframework.explorer.ClassExplorer;
 import com.github.hugovallada.easyframework.util.EasyLogger;
 
 public class EasyFrameworkWebApplication {
     public static void run() {
         Logger.getLogger("org.apache").setLevel(Level.OFF); // desliga os logs do apache
         EasyLogger.showBanner();
+        List<String> allClasses = ClassExplorer.retrieveAllClasses(EasyFrameworkApplication.class);
+        EasyLogger.log("Class Explorer", "Class founds: " + allClasses);
         try {
             var ini = System.currentTimeMillis();
             EasyLogger.log("Main Module", "Starting web application");
